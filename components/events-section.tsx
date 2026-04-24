@@ -55,22 +55,22 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
     <>
       {/* Full-screen loading animation */}
       {isInitialLoad && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/30 bg-cover bg-center px-4"
-          style={{ backgroundImage: "url('/loading-bg.jpg')" }}
-        >
-          <div className="w-full max-w-xl rounded-3xl border border-white/30 bg-white/60 p-8 shadow-2xl shadow-slate-950/10 backdrop-blur-xl">
-            <div className="mb-5 flex justify-center">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-background/10 px-4 pb-8">
+          <div className="w-full max-w-[85vw] rounded-2xl border border-red-600/50 bg-white/40 p-3 shadow-[0_15px_40px_-20px_rgba(220,38,38,0.5)] backdrop-blur-md sm:max-w-xs sm:p-4">
+            <div className="mb-2 flex justify-center">
               <div className="relative">
-                <div className="h-16 w-16 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-                <div className="absolute inset-0 h-16 w-16 animate-ping rounded-full border-2 border-primary/30"></div>
+                <div className="h-10 w-10 animate-spin rounded-full border-3 border-red-600 border-t-transparent"></div>
+                <div className="absolute inset-0 h-10 w-10 animate-ping rounded-full border-2 border-red-400/30"></div>
               </div>
             </div>
-            <p className="mx-auto max-w-lg text-center text-xl font-semibold leading-8 tracking-tight text-slate-950 sm:text-2xl">
+            <p className="mx-auto max-w-full text-center text-sm font-semibold leading-5 tracking-tight text-slate-950 sm:text-base">
               Buscando eventos deportivos
             </p>
-            <p className="mx-auto mt-3 max-w-sm text-center text-sm leading-6 text-slate-700">
+            <p className="mx-auto mt-1 max-w-full text-center text-xs leading-5 text-slate-700 sm:text-sm sm:max-w-xs">
               Obteniendo la información más reciente
+            </p>
+            <p className="mt-1 text-center text-xs font-semibold uppercase text-red-600 sm:hidden">
+              Rote el celular para mejor lectura
             </p>
           </div>
         </div>

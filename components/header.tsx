@@ -9,20 +9,31 @@ interface HeaderProps {
 
 export function Header({ activeSport, onSportChange }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-foreground">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-foreground/95 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 py-3">
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-bold text-background">ARGENTINA-DEPORTES</span>
-          
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3 rounded-full border border-red-600/20 bg-white/5 px-3 py-2 shadow-sm shadow-red-600/10">
+            <img
+              src="/banner-left-illustration.png"
+              alt=""
+              className="h-10 w-auto object-contain"
+            />
+            <img
+              src="/banner-left-text.png"
+              alt="Argentina Deportes"
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-2 lg:flex">
             {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => onSportChange(item)}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
+                className={`rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition duration-200 ease-out ${
                   activeSport === item
-                    ? 'bg-background text-foreground'
+                    ? 'bg-background text-foreground shadow-sm shadow-slate-950/10'
                     : 'text-background/70 hover:text-background hover:bg-background/10'
                 }`}
               >
@@ -45,9 +56,9 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
             <button
               key={item}
               onClick={() => onSportChange(item)}
-              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition duration-200 ease-out ${
                 activeSport === item
-                  ? 'bg-background text-foreground'
+                  ? 'bg-background text-foreground shadow-sm shadow-slate-950/10'
                   : 'bg-background/10 text-background/70'
               }`}
             >
