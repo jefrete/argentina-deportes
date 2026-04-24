@@ -29,7 +29,11 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
 
   useEffect(() => {
     if (!isLoading && data) {
-      setIsInitialLoad(false)
+      // Add minimum 2 second delay for better UX
+      const timer = setTimeout(() => {
+        setIsInitialLoad(false)
+      }, 2000)
+      return () => clearTimeout(timer)
     }
   }, [isLoading, data])
 
@@ -59,7 +63,7 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
                 <div className="absolute inset-0 h-16 w-16 animate-ping rounded-full border-2 border-primary/30"></div>
               </div>
             </div>
-            <p className="text-lg font-medium text-foreground">Cargando eventos deportivos...</p>
+            <p className="text-lg font-medium text-foreground">Buscando eventos deportivos en horario argentino, ¡de macho!</p>
             <p className="text-sm text-muted-foreground">Obteniendo la información más reciente</p>
           </div>
         </div>
