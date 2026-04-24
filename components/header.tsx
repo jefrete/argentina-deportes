@@ -13,19 +13,19 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg shadow-black/20 border-b border-black/10">
-      <div className="mx-auto max-w-7xl px-4 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg shadow-black/15 border-b border-black/10">
+      <div className="mx-auto max-w-7xl px-3 py-2 sm:px-4 sm:py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-2">
             <img
               src="/banner-left-illustration.png"
               alt=""
-              className="h-6 w-auto object-contain sm:h-10"
+              className="h-5 w-auto object-contain sm:h-10"
             />
             <img
               src="/banner-left-text.png"
               alt="Argentina Deportes"
-              className="h-6 w-auto object-contain sm:h-10"
+              className="h-5 w-auto object-contain sm:h-10"
             />
           </div>
 
@@ -50,20 +50,20 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex flex-col items-center justify-center w-8 h-8 space-y-1"
+              className="flex flex-col items-center justify-center w-7 h-7 space-y-1"
               aria-label="Toggle menu"
             >
-              <span className={`block w-5 h-0.5 bg-black transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-              <span className={`block w-5 h-0.5 bg-black transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block w-5 h-0.5 bg-black transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-black transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-black transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-black transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
             </button>
           </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-3 py-3 border-t border-black/10">
-            <nav className="flex flex-wrap gap-2 justify-center">
+          <div className="lg:hidden mt-2 py-2 border-t border-black/10">
+            <nav className="flex flex-wrap gap-1 justify-center">
               {navItems.map((item) => (
                 <button
                   key={item}
@@ -71,7 +71,7 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
                     onSportChange(item)
                     setIsMenuOpen(false)
                   }}
-                  className={`rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition duration-200 ease-out ${
+                  className={`rounded-full border border-transparent px-2 py-1 text-xs font-medium transition duration-200 ease-out ${
                     activeSport === item
                       ? 'bg-black text-white shadow-md shadow-black/30'
                       : 'text-black/70 hover:text-black hover:bg-black/10'

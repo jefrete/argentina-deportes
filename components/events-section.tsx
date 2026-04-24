@@ -55,22 +55,22 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
     <>
       {/* Full-screen loading animation */}
       {isInitialLoad && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white px-4">
-          <div className="flex h-full w-full flex-col items-center justify-center gap-6 overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white px-3 py-2">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden">
             <img
               src="/loading-bg.jpg"
               alt="Loading background"
-              className="max-h-[45vh] w-auto object-contain rounded-3xl shadow-lg shadow-slate-900/10 sm:max-h-[50vh]"
+              className="max-h-[32vh] w-auto object-contain rounded-3xl shadow-lg shadow-slate-900/10 sm:max-h-[38vh]"
             />
-            <div className="flex min-h-[120px] w-full max-w-md flex-col items-center justify-center gap-4 rounded-3xl border border-black/10 bg-black/5 p-5 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:p-6">
+            <div className="flex min-h-[95px] w-full max-w-[88vw] flex-col items-center justify-center gap-2 rounded-3xl border border-black/10 bg-black/5 p-4 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:max-w-md sm:p-5">
               <div className="flex items-center justify-center">
                 <div className="relative">
-                  <div className="h-12 w-12 animate-spin rounded-full border-4 border-black border-t-transparent"></div>
-                  <div className="absolute inset-0 h-12 w-12 animate-ping rounded-full border-2 border-black/20"></div>
+                  <div className="h-10 w-10 animate-spin rounded-full border-3 border-black border-t-transparent sm:h-11 sm:w-11"></div>
+                  <div className="absolute inset-0 h-10 w-10 animate-ping rounded-full border-2 border-black/20 sm:h-11 sm:w-11"></div>
                 </div>
               </div>
-              <p className="text-center text-sm font-semibold uppercase tracking-[0.15em] text-slate-950 sm:text-base">
-                Buscando eventos deportivos
+              <p className="text-center text-sm font-semibold uppercase tracking-[0.14em] text-slate-950 sm:text-sm">
+                Buscando eventos
               </p>
               <p className="text-center text-[11px] leading-5 text-slate-700 sm:text-sm">
                 Obteniendo la información más reciente
