@@ -9,10 +9,10 @@ interface HeaderProps {
 
 export function Header({ activeSport, onSportChange }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-foreground/95 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg shadow-black/20 border-b border-black/10">
       <div className="mx-auto max-w-7xl px-4 py-3">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3 rounded-full border border-red-600/20 bg-white/5 px-3 py-2 shadow-sm shadow-red-600/10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <img
               src="/banner-left-illustration.png"
               alt=""
@@ -33,8 +33,8 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
                 onClick={() => onSportChange(item)}
                 className={`rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition duration-200 ease-out ${
                   activeSport === item
-                    ? 'bg-background text-foreground shadow-sm shadow-slate-950/10'
-                    : 'text-background/70 hover:text-background hover:bg-background/10'
+                    ? 'bg-black text-white shadow-md shadow-black/30'
+                    : 'text-black/70 hover:text-black hover:bg-black/10'
                 }`}
               >
                 {item}
@@ -44,7 +44,7 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
 
           {/* Mobile: current sport indicator */}
           <div className="flex items-center gap-2 lg:hidden">
-            <span className="rounded-full bg-background/20 px-3 py-1 text-xs text-background">
+            <span className="rounded-full bg-black/20 px-3 py-1 text-xs text-black">
               {activeSport}
             </span>
           </div>
@@ -58,8 +58,8 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
               onClick={() => onSportChange(item)}
               className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition duration-200 ease-out ${
                 activeSport === item
-                  ? 'bg-background text-foreground shadow-sm shadow-slate-950/10'
-                  : 'bg-background/10 text-background/70'
+                  ? 'bg-black text-white shadow-md shadow-black/30'
+                  : 'bg-black/10 text-black/70'
               }`}
             >
               {item}
