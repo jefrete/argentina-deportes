@@ -12,7 +12,7 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-foreground">
       <div className="mx-auto max-w-7xl px-4 py-3">
         <div className="flex items-center justify-between">
-          <span className="text-lg font-bold text-background">ARGENTINA Deportes</span>
+          <span className="text-lg font-bold text-background">ARGENTINA-DEPORTES</span>
           
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-1 lg:flex">

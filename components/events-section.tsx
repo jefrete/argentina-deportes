@@ -55,16 +55,23 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
     <>
       {/* Full-screen loading animation */}
       {isInitialLoad && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
-          <div className="text-center">
-            <div className="mb-4 flex justify-center">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/30 bg-cover bg-center px-4"
+          style={{ backgroundImage: "url('/loading-bg.jpg')" }}
+        >
+          <div className="w-full max-w-xl rounded-3xl border border-white/30 bg-white/60 p-8 shadow-2xl shadow-slate-950/10 backdrop-blur-xl">
+            <div className="mb-5 flex justify-center">
               <div className="relative">
                 <div className="h-16 w-16 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
                 <div className="absolute inset-0 h-16 w-16 animate-ping rounded-full border-2 border-primary/30"></div>
               </div>
             </div>
-            <p className="text-lg font-medium text-foreground">Buscando eventos deportivos en horario argentino, ¡de macho!</p>
-            <p className="text-sm text-muted-foreground">Obteniendo la información más reciente</p>
+            <p className="mx-auto max-w-lg text-center text-xl font-semibold leading-8 tracking-tight text-slate-950 sm:text-2xl">
+              Buscando eventos deportivos
+            </p>
+            <p className="mx-auto mt-3 max-w-sm text-center text-sm leading-6 text-slate-700">
+              Obteniendo la información más reciente
+            </p>
           </div>
         </div>
       )}
