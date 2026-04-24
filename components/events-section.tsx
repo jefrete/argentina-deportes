@@ -1,6 +1,7 @@
 "use client"
 
 import useSWR from "swr"
+import { useState, useEffect } from "react"
 import { EventRow } from "./event-row"
 import type { SportEvent } from "@/lib/api"
 import { Spinner } from "@/components/ui/spinner"
@@ -14,14 +15,23 @@ interface EventsSectionProps {
 }
 
 export function EventsSection({ activeSport }: EventsSectionProps) {
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+
   const { data, error, isLoading } = useSWR<{ events: SportEvent[] }>(
     `/api/events?sport=${activeSport.toLowerCase()}`,
     fetcher,
     {
       refreshInterval: 60000,
       revalidateOnFocus: true,
+      revalidateOnMount: true,
     }
   )
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setIsInitialLoad(false)
+    }
+  }, [isLoading, data])
 
   const events = data?.events || []
 
@@ -38,27 +48,44 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
   }
 
   return (
-    <section id="eventos" className="min-h-screen bg-background pt-28 pb-12 lg:pt-20">
+    <>
+      {/* Full-screen loading animation */}
+      {isInitialLoad && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+          <div className="text-center">
+            <div className="mb-4 flex justify-center">
+              <div className="relative">
+                <div className="h-16 w-16 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+                <div className="absolute inset-0 h-16 w-16 animate-ping rounded-full border-2 border-primary/30"></div>
+              </div>
+            </div>
+            <p className="text-lg font-medium text-foreground">Cargando eventos deportivos...</p>
+            <p className="text-sm text-muted-foreground">Obteniendo la información más reciente</p>
+          </div>
+        </div>
+      )}
+
+      <section id="eventos" className="min-h-screen bg-background pt-28 pb-12 lg:pt-20">
       <div className="mx-auto max-w-4xl px-4">
         {/* Stats bar */}
-        <div className="mb-8 flex items-center justify-center gap-6 text-center">
+        <div className="mb-6 flex items-center justify-center gap-4 text-center lg:mb-8 lg:gap-6">
           <div>
-            <p className="text-3xl font-bold text-foreground">{stats.total}</p>
+            <p className="text-2xl font-bold text-foreground lg:text-3xl">{stats.total}</p>
             <p className="text-xs text-muted-foreground">Total</p>
           </div>
-          <div className="h-8 w-px bg-border" />
+          <div className="h-6 w-px bg-border lg:h-8" />
           <div>
-            <p className="text-3xl font-bold text-red-500">{stats.live}</p>
+            <p className="text-2xl font-bold text-red-500 lg:text-3xl">{stats.live}</p>
             <p className="text-xs text-muted-foreground">En vivo</p>
           </div>
-          <div className="h-8 w-px bg-border" />
+          <div className="h-6 w-px bg-border lg:h-8" />
           <div>
-            <p className="text-3xl font-bold text-foreground">{stats.upcoming}</p>
+            <p className="text-2xl font-bold text-foreground lg:text-3xl">{stats.upcoming}</p>
             <p className="text-xs text-muted-foreground">Proximos</p>
           </div>
-          <div className="h-8 w-px bg-border" />
+          <div className="h-6 w-px bg-border lg:h-8" />
           <div>
-            <p className="text-3xl font-bold text-muted-foreground">{stats.finished}</p>
+            <p className="text-2xl font-bold text-muted-foreground lg:text-3xl">{stats.finished}</p>
             <p className="text-xs text-muted-foreground">Finalizados</p>
           </div>
         </div>
@@ -80,11 +107,11 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
 
         {/* Events List */}
         {!isLoading && !error && (
-          <div className="space-y-6">
+          <div className="space-y-4 lg:space-y-6">
             {/* Live Events */}
             {liveEvents.length > 0 && (
               <div>
-                <div className="mb-3 flex items-center gap-2">
+                <div className="mb-2 flex items-center gap-2 lg:mb-3">
                   <div className="h-2 w-2 animate-pulse rounded-full bg-red-500" />
                   <h2 className="text-sm font-bold uppercase text-red-500">En Vivo ({liveEvents.length})</h2>
                 </div>
@@ -99,7 +126,7 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
             {/* Upcoming Events */}
             {upcomingEvents.length > 0 && (
               <div>
-                <h2 className="mb-3 text-sm font-bold uppercase text-muted-foreground">
+                <h2 className="mb-2 text-sm font-bold uppercase text-muted-foreground lg:mb-3">
                   Proximos ({upcomingEvents.length})
                 </h2>
                 <div className="space-y-2">
@@ -113,7 +140,7 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
             {/* Finished Events */}
             {finishedEvents.length > 0 && (
               <div>
-                <h2 className="mb-3 text-sm font-bold uppercase text-muted-foreground">
+                <h2 className="mb-2 text-sm font-bold uppercase text-muted-foreground lg:mb-3">
                   Finalizados ({finishedEvents.length})
                 </h2>
                 <div className="space-y-2">
@@ -135,12 +162,13 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
         )}
 
         {/* Footer */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center lg:mt-12">
           <p className="text-xs text-muted-foreground">
             Datos de ESPN - Actualizado cada minuto - Horarios en Argentina (UTC-3)
           </p>
         </div>
       </div>
     </section>
-  )
+  </>
+)
 }
