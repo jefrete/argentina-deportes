@@ -59,8 +59,8 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
           className="fixed inset-0 z-50 h-screen w-screen bg-cover bg-center bg-no-repeat sm:bg-contain"
           style={{ backgroundImage: "url('/loading-bg.jpg')" }}
         >
-          <div className="absolute inset-0 bg-black/20 sm:bg-transparent"></div>
-          <div className="relative z-10 flex h-full w-full items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black/20 sm:bg-transparent"></div>
+          <div className="fixed inset-0 z-10 flex h-full w-full items-center justify-center p-4">
             <div className="w-full max-w-[95vw] rounded-2xl border border-red-600/50 bg-white/40 p-3 shadow-[0_15px_40px_-20px_rgba(220,38,38,0.5)] backdrop-blur-md sm:max-w-sm sm:p-6">
               <div className="mb-3 flex justify-center">
                 <div className="relative">
