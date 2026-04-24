@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 const navItems = ['Todos', 'Argentina', 'Libertadores', 'Sudamericana', 'Champions', 'La Liga', 'Premier', 'NBA', 'Pumas']
 
 interface HeaderProps {
@@ -8,6 +10,8 @@ interface HeaderProps {
 }
 
 export function Header({ activeSport, onSportChange }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg shadow-black/20 border-b border-black/10">
       <div className="mx-auto max-w-7xl px-4 py-3">
@@ -41,24 +45,44 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
               </button>
             ))}
           </nav>
+
+          {/* Mobile Hamburger Menu */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="flex flex-col items-center justify-center w-8 h-8 space-y-1"
+              aria-label="Toggle menu"
+            >
+              <span className={`block w-5 h-0.5 bg-black transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+              <span className={`block w-5 h-0.5 bg-black transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-5 h-0.5 bg-black transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Nav - Scrollable */}
-        <nav className="mt-3 flex gap-2 overflow-x-auto pb-2 lg:hidden scrollbar-hide">
-          {navItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => onSportChange(item)}
-              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition duration-200 ease-out ${
-                activeSport === item
-                  ? 'bg-black text-white shadow-md shadow-black/30'
-                  : 'bg-black/10 text-black/70'
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </nav>
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="lg:hidden mt-3 py-3 border-t border-black/10">
+            <nav className="flex flex-wrap gap-2 justify-center">
+              {navItems.map((item) => (
+                <button
+                  key={item}
+                  onClick={() => {
+                    onSportChange(item)
+                    setIsMenuOpen(false)
+                  }}
+                  className={`rounded-full border border-transparent px-3 py-1.5 text-sm font-medium transition duration-200 ease-out ${
+                    activeSport === item
+                      ? 'bg-black text-white shadow-md shadow-black/30'
+                      : 'text-black/70 hover:text-black hover:bg-black/10'
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   )

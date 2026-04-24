@@ -56,7 +56,7 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
       {/* Full-screen loading animation */}
       {isInitialLoad && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/10 bg-cover bg-center px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/10 bg-contain bg-center bg-no-repeat px-4"
           style={{ backgroundImage: "url('/loading-bg.jpg')" }}
         >
           <div className="w-full max-w-[95vw] rounded-2xl border border-red-600/50 bg-white/40 p-3 shadow-[0_15px_40px_-20px_rgba(220,38,38,0.5)] backdrop-blur-md sm:max-w-sm sm:p-6">
