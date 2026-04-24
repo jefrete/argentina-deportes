@@ -12,16 +12,16 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg shadow-black/20 border-b border-black/10">
       <div className="mx-auto max-w-7xl px-4 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <img
               src="/banner-left-illustration.png"
               alt=""
-              className="h-10 w-auto object-contain"
+              className="h-8 w-auto object-contain sm:h-10"
             />
             <img
               src="/banner-left-text.png"
               alt="Argentina Deportes"
-              className="h-10 w-auto object-contain"
+              className="h-8 w-auto object-contain sm:h-10"
             />
           </div>
 
@@ -44,7 +44,7 @@ export function Header({ activeSport, onSportChange }: HeaderProps) {
 
           {/* Mobile: current sport indicator */}
           <div className="flex items-center gap-2 lg:hidden">
-            <span className="rounded-full bg-black/20 px-3 py-1 text-xs text-black">
+            <span className="rounded-full bg-black/20 px-2 py-1 text-xs text-black sm:px-3">
               {activeSport}
             </span>
           </div>

@@ -59,20 +59,20 @@ export function EventsSection({ activeSport }: EventsSectionProps) {
           className="fixed inset-0 z-50 flex items-center justify-center bg-background/10 bg-cover bg-center px-4"
           style={{ backgroundImage: "url('/loading-bg.jpg')" }}
         >
-          <div className="w-full max-w-[90vw] rounded-2xl border border-red-600/50 bg-white/30 p-4 shadow-[0_15px_40px_-20px_rgba(220,38,38,0.5)] backdrop-blur-md sm:max-w-sm sm:p-6">
+          <div className="w-full max-w-[95vw] rounded-2xl border border-red-600/50 bg-white/40 p-3 shadow-[0_15px_40px_-20px_rgba(220,38,38,0.5)] backdrop-blur-md sm:max-w-sm sm:p-6">
             <div className="mb-3 flex justify-center">
               <div className="relative">
-                <div className="h-12 w-12 animate-spin rounded-full border-4 border-red-600 border-t-transparent"></div>
-                <div className="absolute inset-0 h-12 w-12 animate-ping rounded-full border-2 border-red-400/50"></div>
+                <div className="h-10 w-10 animate-spin rounded-full border-3 border-red-600 border-t-transparent sm:h-12 sm:w-12 sm:border-4"></div>
+                <div className="absolute inset-0 h-10 w-10 animate-ping rounded-full border-2 border-red-400/50 sm:h-12 sm:w-12"></div>
               </div>
             </div>
-            <p className="mx-auto max-w-full text-center text-base font-semibold leading-6 tracking-tight text-slate-950 sm:text-lg">
+            <p className="mx-auto max-w-full text-center text-sm font-semibold leading-5 tracking-tight text-slate-950 sm:text-base sm:leading-6">
               Buscando eventos deportivos
             </p>
-            <p className="mx-auto mt-2 max-w-full text-center text-sm leading-6 text-slate-700 sm:max-w-sm">
+            <p className="mx-auto mt-1 max-w-full text-center text-xs leading-5 text-slate-700 sm:text-sm sm:mt-2 sm:leading-6">
               Obteniendo la información más reciente
             </p>
-            <p className="mt-2 text-center text-xs font-semibold uppercase text-red-600 sm:hidden">
+            <p className="mt-1 text-center text-xs font-semibold uppercase text-red-600 sm:hidden">
               Rote el celular para mejor lectura
             </p>
           </div>
